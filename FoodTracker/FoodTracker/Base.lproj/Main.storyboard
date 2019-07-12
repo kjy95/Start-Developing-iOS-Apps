@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eVF-ma-N8c">
-                                <rect key="frame" x="0.0" y="108" width="414" height="448"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eVF-ma-N8c">
+                                <rect key="frame" x="0.0" y="108" width="414" height="454"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KbH-hr-f4o">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -41,8 +41,8 @@
                                             <outletCollection property="gestureRecognizers" destination="rtM-hS-QYd" appends="YES" id="IVP-3s-YZy"/>
                                         </connections>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ulz-fj-HH6" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
-                                        <rect key="frame" x="81" y="404" width="252" height="44"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ulz-fj-HH6" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
+                                        <rect key="frame" x="81" y="404" width="252" height="50"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -86,7 +86,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2818.840579710145" y="138.61607142857142"/>
+            <point key="canvasLocation" x="2497" y="139"/>
         </scene>
         <!--Your Meals-->
         <scene sceneID="72E-8U-LoI">

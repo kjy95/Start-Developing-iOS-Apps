@@ -21,7 +21,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
      or constructed as part of adding a new meal.
      */
     var meal: Meal?
-    
+   
     //MARK: Navigation
     // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
