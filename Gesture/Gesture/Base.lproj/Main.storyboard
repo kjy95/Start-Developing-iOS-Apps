@@ -28,8 +28,8 @@
                                         <gestureRecognizers/>
                                         <state key="normal" title="rotate/scale"/>
                                         <connections>
-                                            <action selector="scaleAndRotate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hv1-7s-dmM"/>
-                                            <action selector="touchdown:" destination="BYZ-38-t0r" eventType="touchDown" id="Zyy-ib-XBs"/>
+                                            <action selector="touchdown:" destination="BYZ-38-t0r" eventType="touchDown" id="mE5-2O-aKs"/>
+                                            <action selector="touchupInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xhh-dX-CKh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -42,6 +42,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="rotateScale" destination="UAp-x6-vIc" id="7b1-8D-pRo"/>
                         <outlet property="targetView" destination="wfl-Ry-zvL" id="hJ2-de-TRQ"/>
                     </connections>
                 </viewController>
