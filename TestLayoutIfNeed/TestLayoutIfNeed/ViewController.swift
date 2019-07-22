@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var blueHeight: NSLayoutConstraint!
     
     @IBAction func heightPressed(_ sender: AnyObject) {
@@ -25,6 +27,7 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 2.0, animations: {
             self.view.setNeedsLayout()
         })
+        label1.transform = label1.transform.translatedBy(x: -1, y: 1)
     }
     
     override func viewDidLoad() {

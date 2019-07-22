@@ -58,10 +58,6 @@ class ViewController: UIViewController {
     }
     //필요한 view 추가
     private func addView(){
-        //autoresizing
-        //view.autoresizesSubviews = true
-        //view.translatesAutoresizingMaskIntoConstraints = false
-        
         //add label view
         self.view.addSubview(labelView1)
         self.labelView1.addSubview(labelView2)
@@ -91,25 +87,30 @@ class ViewController: UIViewController {
         self.view.addSubview(changeLayoutSynicButton)
         self.view.addSubview(addRemoveSubviewButton)
     }
+    
     //autolayout
     private func autoResizingOn(){
         viewAutoResizingOn(view: labelView1)
         viewAutoResizingOn(view: labelView2)
         viewAutoResizingOn(view: labelView3)
     }
+    
     private func autoResizingOff(){
         viewAutoResizingOff(view: labelView1)
         viewAutoResizingOff(view: labelView2)
         viewAutoResizingOff(view: labelView3)
     }
+    
     private func viewAutoResizingOn(view: UIView){
         view.autoresizesSubviews = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.autoresizingMask = [ .flexibleWidth, .flexibleHeight]
     }
+    
     private func viewAutoResizingOff(view: UIView){
         view.autoresizesSubviews = false
     }
+    
     //print center, frame, bound
     private func printLog(){
         print("labelView1: frame-\(labelView1.frame)  bound - \(labelView1.bounds) center - \(labelView1.center)\n labelView2: frame-\(labelView2.frame)  bound - \(labelView2.bounds) center - \(labelView2.center)\n labelView3: frame-\(labelView3.frame)  bound - \(labelView3.bounds) center - \(labelView3.center)\n")
@@ -162,29 +163,33 @@ class ViewController: UIViewController {
         let labelView1Bound = printConvertLabel.convert(labelBound, to: labelView1)
         let labelView2Bound = printConvertLabel.convert(labelBound, to: labelView2)
         let labelView3Bound = printConvertLabel.convert(labelBound, to: labelView3)
-        
         print("printConvertLabel bound:\(labelBound) \n labelView1 location point:\(labelView1Bound)point \n labelView2 location point:\(labelView2Bound)point \n labelView 3 location point:\(labelView3Bound)point\n")
     }
+    
     //버튼 클릭시 transform (-1, +1)point 변환
     @objc private func transformAction(){
         transformLabel.transform = transformLabel.transform.translatedBy(x: -1, y: 1)
         print("(-1, +1)point 변환")
     }
+    
     //버튼 클릭시 rotate 45도 변환
     @objc private func rotateButtonAction(){
         rotate45DegreeLabel.transform = rotate45DegreeLabel.transform.rotated(by: CGFloat(Double.pi/4))
         print(" rotate 45도")
     }
+    
     //버튼 클릭시 scaleDownButtonAction
     @objc private func scaleDownButtonAction(){
         labelScaleUpDownView.transform = labelScaleUpDownView.transform.scaledBy(x: 0.7, y: 0.7)
         print("(x: 0.7, y: 0.7)scale 변환")
     }
+    
     //버튼 클릭시 scaleUpButtonAction
     @objc private func scaleUpButtonAction(){
         labelScaleUpDownView.transform = labelScaleUpDownView.transform.scaledBy(x: 1.3, y: 1.3)
         print(" (x: 1.3, y: 1.3)scale 변환")
     }
+    
     //버튼 클릭시 labelview height + 10
     @objc private func heightButtonAction(){
         //labelView1.frame.size.height = labelView1.frame.height + 10
@@ -210,17 +215,17 @@ class ViewController: UIViewController {
             self.view.setNeedsLayout()
         }
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
-    //auto resizing
+    
+    //auto resizing off
     @objc private func autoresizeOffButtonAction(){
         autoResizingOff()
     }
-    //auto resizing
+    
+    //auto resizing on
     @objc private func autoresizeOnButtonAction(){
         autoResizingOn()
     }
+    
     //버튼 클릭시 tag 1에 속하는 view -> 15 drgree rotate
     @objc private func tagButtonAction(){
         print("\ntag:\(tagLabel.tag)")
@@ -230,6 +235,7 @@ class ViewController: UIViewController {
             print("\ntag:\(tagLabel.tag)")
         }
     }
+    
     //subview 추가/제거
     var isRemoved = true
     @objc private func addRemoveSubviewButtonButtonAction(){
