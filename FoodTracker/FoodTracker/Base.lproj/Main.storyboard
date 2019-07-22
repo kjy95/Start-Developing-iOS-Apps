@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eVF-ma-N8c">
-                                <rect key="frame" x="0.0" y="108" width="414" height="448"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eVF-ma-N8c">
+                                <rect key="frame" x="0.0" y="108" width="414" height="454"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KbH-hr-f4o">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -41,8 +41,8 @@
                                             <outletCollection property="gestureRecognizers" destination="rtM-hS-QYd" appends="YES" id="IVP-3s-YZy"/>
                                         </connections>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ulz-fj-HH6" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
-                                        <rect key="frame" x="81" y="404" width="252" height="44"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ulz-fj-HH6" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
+                                        <rect key="frame" x="81" y="404" width="252" height="50"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -65,10 +65,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Meal" id="0EW-tr-qpM">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jUd-Q8-Jf1"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vsk-K8-oLA"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jUd-Q8-Jf1">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="30i-AG-66M"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vsk-K8-oLA">
+                            <connections>
+                                <segue destination="0Al-yW-hZ2" kind="unwind" unwindAction="unwindToMealListWithSender:" id="MNH-am-0Fq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancel" destination="jUd-Q8-Jf1" id="VIv-PV-CkP"/>
                         <outlet property="photoImageView" destination="VJ1-dN-Zxd" id="khH-gD-BgZ"/>
                         <outlet property="ratingControl" destination="Ulz-fj-HH6" id="SES-JY-V4v"/>
                         <outlet property="saveButton" destination="vsk-K8-oLA" id="a6I-LK-yTM"/>
@@ -76,13 +85,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="0Al-yW-hZ2" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="rtM-hS-QYd">
                     <connections>
                         <action selector="selectImageFormPhotoLibrary:" destination="BYZ-38-t0r" id="UQK-wI-Sfi"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2818.840579710145" y="138.61607142857142"/>
+            <point key="canvasLocation" x="2497" y="139"/>
         </scene>
         <!--Your Meals-->
         <scene sceneID="72E-8U-LoI">
@@ -121,6 +131,7 @@
                                     <outlet property="nameLabel" destination="jCr-f6-6kH" id="ePw-my-VIB"/>
                                     <outlet property="photoImageView" destination="xA0-WA-B59" id="ZLl-Sd-6d8"/>
                                     <outlet property="ratingControl" destination="1Qf-hJ-13X" id="Xwr-nQ-8Fw"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="WBM-WX-sVn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -132,7 +143,7 @@
                     <navigationItem key="navigationItem" title="Your Meals" id="C8r-wv-o2Z">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="SVS-iJ-yZQ">
                             <connections>
-                                <segue destination="Zzj-0M-i28" kind="show" id="lkl-C7-SiM"/>
+                                <segue destination="Zzj-0M-i28" kind="show" identifier="Additem" id="lkl-C7-SiM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -175,10 +186,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Z0-Ry-bzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908.6956521739132" y="138.61607142857142"/>
+            <point key="canvasLocation" x="1929" y="535"/>
         </scene>
     </scenes>
     <resources>
         <image name="defaultPhoto" width="662" height="785"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="WBM-WX-sVn"/>
+    </inferredMetricsTieBreakers>
 </document>
