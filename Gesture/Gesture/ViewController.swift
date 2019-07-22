@@ -27,6 +27,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         rotateRecogniezer = UIRotationGestureRecognizer(target: self, action: #selector( rotateAction(_ :)))
         pinchRecogniezer = UIPinchGestureRecognizer(target: self, action: #selector( pinchAction(_ :)))
         panRotateRecogniezer.delegate = self
+        panRecogniezer.delegate = self
         pinchRecogniezer.delegate = self
         
         
@@ -56,17 +57,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 preLoc = sender.location(in: view)
                 print("began")
             case .changed:
-                
-                let v1 = sender.location(in: view)
-                let v2 = preLoc
-                let x = v1.x - v2.x
-                let y = v1.y - v2.y
-                print("\(v1.x)--\(v2.x)--\(x)")
-                preLoc = v1
-                targetView.frame.size.width = 100
-                //
-                //targetView.transform = targetView.transform.scaledBy(x:  1 + x/10 , y:   1 + y/10)
-                //panRecogniezer.setTranslation(CGPoint.zero, in: targetView)
+               
+                //반 너비
+                let halfWidth =  sender.location(in: view).x - targetView.center.x
+                //반 높이
+                let halfHight =  sender.location(in: view).y - targetView.center.y
+                let x = targetView.center.x - halfWidth
+                let y = targetView.center.y - halfHight
+                //뒤집히지 않게
+                if halfHight < 0 || halfWidth<0{break}
+                let frame = CGRect(x: x, y: y, width: halfWidth*2, height: halfHight*2)
+                targetView.frame = frame
                 
             case .ended:
                 print("end")
@@ -86,10 +87,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func panRotateAction(_ sender : UIPanGestureRecognizer){
         //var previoutLoc = CGPoint(x: 0, y: 0)
         if isButtonClicked{
-            /*//대각선
-            let distance : CGFloat = sqrt(sender.location(in: view).x * targetView.center.x + sender.location(in: view).y * targetView.center.y);
-            let frame = CGRect(x: sender.location(in: view).x, y: sender.location(in: view).y, width: <#T##CGFloat#>, height: targetView.center.y)
-            targetView.frame =
+            
             switch(sender.state){
             case .began:
                 previoutLoc = sender.location(in: view)
@@ -114,7 +112,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 break
             }
             
-            */
+            
         }
 
     }

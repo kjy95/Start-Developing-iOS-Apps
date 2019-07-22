@@ -18,14 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wfl-Ry-zvL">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfl-Ry-zvL">
                                 <rect key="frame" x="117" y="313" width="181" height="212"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAp-x6-vIc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAp-x6-vIc">
                                         <rect key="frame" x="99" y="182" width="82" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="82" id="k4c-Fw-1v0"/>
+                                            <constraint firstAttribute="height" constant="30" id="vuW-03-Wxg"/>
+                                        </constraints>
                                         <state key="normal" title="rotate/scale"/>
                                         <connections>
                                             <action selector="touchdown:" destination="BYZ-38-t0r" eventType="touchDown" id="mE5-2O-aKs"/>
@@ -35,10 +37,20 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UAp-x6-vIc" secondAttribute="trailing" id="QrP-li-gZu"/>
+                                    <constraint firstAttribute="bottom" secondItem="UAp-x6-vIc" secondAttribute="bottom" id="iGH-xs-EmP"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wfl-Ry-zvL" secondAttribute="bottom" constant="337" id="23K-Yq-Gnu"/>
+                            <constraint firstItem="wfl-Ry-zvL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="117" id="adI-i7-MgM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wfl-Ry-zvL" secondAttribute="trailing" constant="116" id="f0X-cl-pvG"/>
+                            <constraint firstItem="wfl-Ry-zvL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="269" id="zOf-vV-mkD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
