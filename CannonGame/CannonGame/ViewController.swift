@@ -14,7 +14,11 @@ class ViewController: UIViewController {
     var cannonBallData : CannonBallData?
     override func viewDidLoad() {
         super.viewDidLoad()
-        if CannonBallData == CannonBallData(maximumXPoint: self.view.frame.maxX, maximumYPoint: self.view.frame.maxY, cannonRadian: 0){
+        let maxXframe = self.view.frame.maxX
+        let maxYframe = self.view.frame.maxY
+        cannonBallData = CannonBallData(maximumXPoint: maxXframe, maximumYPoint: maxYframe, cannonRadian: 0)
+        if  let ballData = cannonBallData{
+            print("asf")
             
         }
         // Do any additional setup after loading the view.
