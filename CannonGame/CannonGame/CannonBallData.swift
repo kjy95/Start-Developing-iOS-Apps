@@ -18,6 +18,5 @@ class CannonBallData {
         self.maximumXPoint = maximumXPoint
         self.maximumYPoint = maximumYPoint
         self.cannonRadian = cannonRadian
-        
     }
 }
