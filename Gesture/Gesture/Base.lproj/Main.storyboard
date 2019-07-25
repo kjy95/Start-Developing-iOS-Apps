@@ -24,37 +24,44 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAp-x6-vIc">
                                         <rect key="frame" x="99" y="182" width="82" height="30"/>
                                         <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="82" id="k4c-Fw-1v0"/>
-                                            <constraint firstAttribute="height" constant="30" id="vuW-03-Wxg"/>
-                                        </constraints>
                                         <state key="normal" title="rotate/scale"/>
                                         <connections>
                                             <action selector="touchdown:" destination="BYZ-38-t0r" eventType="touchDown" id="mE5-2O-aKs"/>
-                                            <action selector="touchupInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xhh-dX-CKh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mb-9C-yNB">
+                                        <rect key="frame" x="140" y="0.0" width="41" height="30"/>
+                                        <state key="normal" title="rotate"/>
+                                        <connections>
+                                            <action selector="touchDown:" destination="BYZ-38-t0r" eventType="touchDown" id="tq4-Gu-Qwc"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="UAp-x6-vIc" secondAttribute="trailing" id="QrP-li-gZu"/>
-                                    <constraint firstAttribute="bottom" secondItem="UAp-x6-vIc" secondAttribute="bottom" id="iGH-xs-EmP"/>
+                                    <constraint firstAttribute="trailing" secondItem="UAp-x6-vIc" secondAttribute="trailing" id="4Tx-V8-cNk"/>
+                                    <constraint firstAttribute="trailing" secondItem="2mb-9C-yNB" secondAttribute="trailing" id="9OU-mZ-K65"/>
+                                    <constraint firstAttribute="bottom" secondItem="UAp-x6-vIc" secondAttribute="bottom" id="Ddf-mP-mwB"/>
+                                    <constraint firstItem="UAp-x6-vIc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wfl-Ry-zvL" secondAttribute="leading" constant="20" symbolic="YES" id="cvj-YT-Zfj"/>
+                                    <constraint firstItem="2mb-9C-yNB" firstAttribute="top" secondItem="wfl-Ry-zvL" secondAttribute="top" id="jRE-oG-15T"/>
+                                    <constraint firstItem="2mb-9C-yNB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wfl-Ry-zvL" secondAttribute="leading" constant="20" symbolic="YES" id="pQN-ho-Ben"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wfl-Ry-zvL" secondAttribute="bottom" constant="337" id="23K-Yq-Gnu"/>
-                            <constraint firstItem="wfl-Ry-zvL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="117" id="adI-i7-MgM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wfl-Ry-zvL" secondAttribute="trailing" constant="116" id="f0X-cl-pvG"/>
-                            <constraint firstItem="wfl-Ry-zvL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="269" id="zOf-vV-mkD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wfl-Ry-zvL" secondAttribute="trailing" constant="116" id="329-fK-CSb"/>
+                            <constraint firstItem="wfl-Ry-zvL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="117" id="BPv-fv-WZj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wfl-Ry-zvL" secondAttribute="bottom" constant="337" id="Esd-WU-l65"/>
+                            <constraint firstItem="wfl-Ry-zvL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="269" id="jSa-KH-eti"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="rotateScale" destination="UAp-x6-vIc" id="7b1-8D-pRo"/>
+                        <outlet property="rotatebutton" destination="2mb-9C-yNB" id="iuY-Fb-Tnv"/>
                         <outlet property="targetView" destination="wfl-Ry-zvL" id="hJ2-de-TRQ"/>
                     </connections>
                 </viewController>
