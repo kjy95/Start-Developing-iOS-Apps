@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ 포탄 생성
+ */
 class CannonBall: UIView {
 
     override init(frame: CGRect) {
@@ -22,6 +25,8 @@ class CannonBall: UIView {
     
     func cannonBallInit(){
         self.backgroundColor = UIColor.yellow
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderWidth = 1
     }
 
 }

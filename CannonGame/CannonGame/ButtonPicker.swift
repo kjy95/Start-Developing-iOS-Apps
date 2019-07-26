@@ -9,16 +9,15 @@
 import UIKit
 
 /**
- 버튼 선택 프로토콜
+ 모양 버튼 선택 프로토콜
  */
 protocol ButtonPickerDelegate : class {
     func changeShape(shape: String)
 }
 
 /**
- 버튼 선택 창
+ 모양 버튼 선택 창
  */
-
 class ButtonPicker: UIView {
     weak var delegate: ButtonPickerDelegate?
 

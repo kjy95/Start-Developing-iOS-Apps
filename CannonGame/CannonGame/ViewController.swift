@@ -22,12 +22,15 @@ class ViewController: UIViewController, ButtonPickerDelegate {
     var cannonIdentityTransfrom : CGAffineTransform?
     
     //timer
-    var timer : Timer?
-    
-    
+    var timer : [Timer]?
+    //cannon goal point
+    var goalPoint : [CGPoint]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //timer 초기화
+        timer = [Timer]()
+        goalPoint = [CGPoint]()
         //초기 데이터
         let maxXframe = self.view.frame.maxX
         let maxYframe = self.view.frame.maxY
@@ -44,7 +47,6 @@ class ViewController: UIViewController, ButtonPickerDelegate {
         cannonBallGuideLine.transform = cannonIdentityTransfrom!.rotated(by: CGFloat.pi/2)
         //포탄 초기화
         cannonBall.center = cannonBallGuideLine.center
-        
         //cannonBallData 데이터 저장
         cannonBallData = CannonBallData(maximumXPoint: maxXframe, initFrame: cannonBall.frame)
     }
@@ -72,45 +74,51 @@ class ViewController: UIViewController, ButtonPickerDelegate {
     @IBAction func tapShoot(_ sender: Any) {
         //timer start
         if let frame = cannonBallData?.initFrame{
+            //creat cannon ball
             let tempCannonBall = CannonBall(frame: frame)
-            print(tempCannonBall.frame)
+            tempCannonBall.layer.cornerRadius = cannonBall.layer.cornerRadius
+            //add the view
             buttonPickerView.addSubview(tempCannonBall)
-            timer = Timer()
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(shottingCannonBall(_:)), userInfo: tempCannonBall, repeats: true)
+            
+            //create goal point view
+            let tempGuideLine = UIView.init(frame: cannonBallGuideLine.frame)
+            tempGuideLine.transform = cannonBallGuideLine.transform
+            tempGuideLine.isHidden = true
+            //add the view
+            buttonPickerView.addSubview(tempGuideLine)
+            
+            //make timer paramater
+            var timerParamater = [UIView]()
+            timerParamater.append(tempCannonBall)
+            timerParamater.append(tempGuideLine)
+            
+            //타이머 시작
+            timer?.append(Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(shottingCannonBall(_:)), userInfo: timerParamater, repeats: true))
         }
     }
-    
     //timer func
-    @objc func shottingCannonBall(_ tempCannonBall: Timer){
-        let cannonBall = tempCannonBall.userInfo as! UIView
-        print(cannonBall.frame)
-        /*//currentBall copy
+    @objc func shottingCannonBall(_ timerParamater: Timer){
+        //paramater 변환
+        let timerList = timerParamater.userInfo as! [UIView]
+        let cannonBall = timerList[0]
+        let cannonBallGuideLine = timerList[1]
+        
         let currentBallLoc = buttonPickerView.convert(cannonBall.center, to: cannonBallGuideLine)
-        cannonBall.center = cannonBallGuideLine.convert(CGPoint(x: currentBallLoc.x-1, y: currentBallLoc.y), to: buttonPickerView)
+        
+        cannonBall.center = cannonBallGuideLine.convert(CGPoint(x: currentBallLoc.x-10, y: currentBallLoc.y), to: buttonPickerView)
+        
         //remove view. 프레임 밖으로 포탄이 나갔을 때
         let currentBallLocOfRootView = buttonPickerView.convert(cannonBall.center, to: nil)
         //print log
         print(currentBallLocOfRootView)
         if currentBallLocOfRootView.x < -15 || currentBallLocOfRootView.x > ((cannonBallData?.maximumXPoint)! + CGFloat(15))  || currentBallLocOfRootView.y < -15 {
             //타이머 멈춤
-            timer?.invalidate()
+            timer?[0].invalidate()
+            timer?.removeFirst()
+            print("remove")
             //뷰 없앰
             cannonBall.removeFromSuperview()
-        }*/
-        /*/real---------
-        //shotting
-        let currentBallLoc = buttonPickerView.convert(cannonBall.center, to: cannonBallGuideLine)
-        cannonBall.center = cannonBallGuideLine.convert(CGPoint(x: currentBallLoc.x-1, y: currentBallLoc.y), to: buttonPickerView)
-        //remove view. 프레임 밖으로 포탄이 나갔을 때
-        let currentBallLocOfRootView = buttonPickerView.convert(cannonBall.center, to: nil)
-        //print log
-        print(currentBallLocOfRootView)
-        if currentBallLocOfRootView.x < -15 || currentBallLocOfRootView.x > ((cannonBallData?.maximumXPoint)! + CGFloat(15))  || currentBallLocOfRootView.y < -15 {
-            //타이머 멈춤
-            timer?.invalidate()
-            //뷰 없앰
-            cannonBall.removeFromSuperview() 
-        }*/
+        }
     }
     
     //-------------------------------------------------------------
@@ -118,11 +126,10 @@ class ViewController: UIViewController, ButtonPickerDelegate {
     //
     func changeShape(shape: String) {
         //타이머 동작시(포탄 날아갈때) 모양 못바꿈.
-        if !(timer?.isValid ?? false){
+        /*if !(timer?.isValid ?? false){*/
             switch shape {
             case "triangle":
-                let cannonBall  = Triangle(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-                cannonBall.backgroundColor = .blue
+                let cannonBall  = Triangle(frame: cannonBallData!.initFrame)
                 cannonBall.center = cannonBall.center
                 buttonPickerView.addSubview(cannonBall)
             case "circle":
@@ -132,7 +139,7 @@ class ViewController: UIViewController, ButtonPickerDelegate {
             default:
                 print("default")
             }
-        }
+        /*}*/
     }
 }
 
