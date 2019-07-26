@@ -14,6 +14,9 @@
 		3B22571A22E9A9B900C4DD1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B22571822E9A9B900C4DD1E /* LaunchScreen.storyboard */; };
 		3B22572522E9A9B900C4DD1E /* CannonGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B22572422E9A9B900C4DD1E /* CannonGameTests.swift */; };
 		3B22573022E9AE8C00C4DD1E /* CannonBallData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B22572F22E9AE8C00C4DD1E /* CannonBallData.swift */; };
+		3B7EEDFC22EAC49000F4814C /* ButtonPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7EEDFB22EAC49000F4814C /* ButtonPicker.swift */; };
+		3B7EEDFE22EAE16A00F4814C /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7EEDFD22EAE16A00F4814C /* Triangle.swift */; };
+		3B7EEE0022EAE8F300F4814C /* CannonBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7EEDFF22EAE8F300F4814C /* CannonBall.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		3B22572422E9A9B900C4DD1E /* CannonGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannonGameTests.swift; sourceTree = "<group>"; };
 		3B22572622E9A9B900C4DD1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B22572F22E9AE8C00C4DD1E /* CannonBallData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannonBallData.swift; sourceTree = "<group>"; };
+		3B7EEDFB22EAC49000F4814C /* ButtonPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPicker.swift; sourceTree = "<group>"; };
+		3B7EEDFD22EAE16A00F4814C /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		3B7EEDFF22EAE8F300F4814C /* CannonBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannonBall.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,9 @@
 				3B22571822E9A9B900C4DD1E /* LaunchScreen.storyboard */,
 				3B22571B22E9A9B900C4DD1E /* Info.plist */,
 				3B22572F22E9AE8C00C4DD1E /* CannonBallData.swift */,
+				3B7EEDFB22EAC49000F4814C /* ButtonPicker.swift */,
+				3B7EEDFD22EAE16A00F4814C /* Triangle.swift */,
+				3B7EEDFF22EAE8F300F4814C /* CannonBall.swift */,
 			);
 			path = CannonGame;
 			sourceTree = "<group>";
@@ -201,8 +210,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B22573022E9AE8C00C4DD1E /* CannonBallData.swift in Sources */,
+				3B7EEE0022EAE8F300F4814C /* CannonBall.swift in Sources */,
 				3B22571222E9A9B900C4DD1E /* ViewController.swift in Sources */,
+				3B7EEDFE22EAE16A00F4814C /* Triangle.swift in Sources */,
 				3B22571022E9A9B900C4DD1E /* AppDelegate.swift in Sources */,
+				3B7EEDFC22EAC49000F4814C /* ButtonPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

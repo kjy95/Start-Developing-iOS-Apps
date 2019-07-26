@@ -8,15 +8,13 @@
 
 import UIKit
 /**
- 대포알 정보
+ 대포알 발사를 위한 정보 저장
  */
 class CannonBallData {
     let maximumXPoint : CGFloat?
-    let maximumYPoint : CGFloat?
-    var cannonRadian : CGFloat?
-    init(maximumXPoint: CGFloat, maximumYPoint: CGFloat, cannonRadian: CGFloat) {
+    let initFrame : CGRect
+    init(maximumXPoint: CGFloat, initFrame: CGRect) {
         self.maximumXPoint = maximumXPoint
-        self.maximumYPoint = maximumYPoint
-        self.cannonRadian = cannonRadian
+        self.initFrame = initFrame
     }
 }
