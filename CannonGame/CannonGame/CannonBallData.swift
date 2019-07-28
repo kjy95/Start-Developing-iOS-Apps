@@ -8,13 +8,24 @@
 
 import UIKit
 /**
- 대포알 발사를 위한 정보 저장
+ 대포알 데이터
+ 생성, 제거 정보
  */
 class CannonBallData {
+    
+    //화면 경계. 포탄을 제거할 때 필요한 정보.
     let maximumXPoint : CGFloat?
+    
+    //포탄 프레임
     let initFrame : CGRect
+    
+    //포탄 각도
+    var radian : CGFloat?
+    
+    //초기화
     init(maximumXPoint: CGFloat, initFrame: CGRect) {
         self.maximumXPoint = maximumXPoint
         self.initFrame = initFrame
     }
+    
 }

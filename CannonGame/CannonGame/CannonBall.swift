@@ -24,7 +24,7 @@ class CannonBall: UIView {
     }
     
     func cannonBallInit(){
-        self.backgroundColor = UIColor.yellow
+        self.backgroundColor = UIColor.blue
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.borderWidth = 1
     }

@@ -10,6 +10,7 @@ import UIKit
 
 /**
  모양 버튼 선택 프로토콜
+ 델리게이트 파라메터로 어떤 모양인지 보내줌
  */
 protocol ButtonPickerDelegate : class {
     func changeShape(shape: String)
@@ -20,7 +21,8 @@ protocol ButtonPickerDelegate : class {
  */
 class ButtonPicker: UIView {
     weak var delegate: ButtonPickerDelegate?
-
+    
+    //각 버튼을 눌렀을 때
     @IBAction func tapCircle(_ sender: Any) {
         delegate?.changeShape(shape: "circle")
     }
