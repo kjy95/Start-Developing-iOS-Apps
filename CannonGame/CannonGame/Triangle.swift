@@ -10,7 +10,10 @@ import UIKit
 /**
  삼각형 포탄
  */
-class Triangle : UIView {
+class Triangle : CannonBall {
+    
+    //timer
+    //var timer : Timer?
     
     //MARK: 초기화
     override init(frame: CGRect) {

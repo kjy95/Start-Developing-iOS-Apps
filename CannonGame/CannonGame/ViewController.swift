@@ -17,6 +17,7 @@ class ViewController: UIViewController, ButtonPickerDelegate {
     @IBOutlet weak var degreeSlider: UISlider!
     @IBOutlet weak var buttonPickerView: ButtonPicker!
     var triangleCannon : UIView?
+    
     //MARK: handling data value
     //포탄 model
     var cannonBallData : CannonBallData?
@@ -28,7 +29,7 @@ class ViewController: UIViewController, ButtonPickerDelegate {
     var triCannonBallIdentityTransform : CGAffineTransform?
     
     //timer
-    var timer : [Timer]?
+    var timer : Timer?
     
     //MARK: VC lifeCycle
     override func viewDidLoad() {
@@ -36,7 +37,7 @@ class ViewController: UIViewController, ButtonPickerDelegate {
         
         //---data handling value
         //timer 초기화
-        timer = [Timer]()
+        timer = Timer()
         
         //화면 끝
         let maxXframe = self.view.frame.maxX
@@ -102,17 +103,18 @@ class ViewController: UIViewController, ButtonPickerDelegate {
         }
     }
     
-    
     //shoot버튼을 눌렀을 때
     @IBAction func tapShoot(_ sender: Any) {
         //포탄 모양
         let willShootCannonBall = getWillShootCannonShape()
+        
         //포탄 transform
         if triangleCannon?.isHidden ?? true {
-        willShootCannonBall.transform = willShootCannonBall.transform.rotated(by: cannonBallData?.radian ?? 0)
+            willShootCannonBall.transform = willShootCannonBall.transform.rotated(by: cannonBallData?.radian ?? 0)
         }else{
             willShootCannonBall.transform = triCannonBallIdentityTransform!.rotated(by: cannonBallData?.radian ?? 0)
         }
+        
         //add the view
         buttonPickerView.addSubview(willShootCannonBall)
         
@@ -125,12 +127,13 @@ class ViewController: UIViewController, ButtonPickerDelegate {
         buttonPickerView.addSubview(tempGuideLine)
         
         //make timer paramater
-        var timerParamater = [UIView]()
+        var timerParamater = [NSObject]()
         timerParamater.append(willShootCannonBall)
         timerParamater.append(tempGuideLine)
         
         //타이머 시작
-        timer?.append(Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(shottingCannonBall(_:)), userInfo: timerParamater, repeats: true))
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(shottingCannonBall(_:)), userInfo: timerParamater, repeats: true)
+        (willShootCannonBall as! CannonBall).timer = timer
         
     }
     
@@ -175,11 +178,15 @@ class ViewController: UIViewController, ButtonPickerDelegate {
         //변환한 포탄 위치가 루트 뷰 프레임 밖으로 나갔을 때 remove view.
         if currentBallLocOfRootView.x < -15 || currentBallLocOfRootView.x > ((cannonBallData?.maximumXPoint)! + CGFloat(15))  || currentBallLocOfRootView.y < -15 {
             //타이머 멈춤
-            timer?[0].invalidate()
-            timer?.removeFirst()
-            print("remove")
+            (cannonBall as! CannonBall).timer?.invalidate()
+            //(cannonBall as! Triangle).timer?.invalidate()
+            //timer?[0].invalidate()
+            //timer?.removeFirst()
+            
             //뷰 없앰
             cannonBall.removeFromSuperview()
+            cannonBallGuideLine.removeFromSuperview()
+            print("remove")
         }
     }
     
