@@ -10,23 +10,30 @@ import UIKit
 /**
  적 데이터
  */
-class EnemyModel {
+class EnemyModel: Hashable{
+    //프로토콜 사용
+    //dictionary key로 만들기 위한 함수.
+    func hash(into hasher: inout Hasher) {}
+    static func == (lhs: EnemyModel, rhs: EnemyModel) -> Bool {
+        return lhs === rhs
+    }
+    
     //-------------------------------------------------------------
     //MARK: - define Value
     //
 
     //  위치
     var maxX : UInt32?
-    var position : CGPoint?
+    var position : CGPoint
     
     // 벡터
-    var vector : CGVector?
+    var vector : CGVector
     var radian : CGFloat
     
     // speed
-    var maxSpeed : UInt32 = 0
-    var minSpeed : UInt32 = 0
-    var speed : UInt32?
+    var maxSpeed : CGFloat = 0
+    var minSpeed : CGFloat = 0
+    var speed : CGFloat
     
     //체력
     var health : Int?
@@ -36,15 +43,19 @@ class EnemyModel {
 
     //MARK: 초기화
     
-    init(vector: CGVector, maxX: UInt32, maxSpeed: UInt32, minSpeed: UInt32) {
+    init(vector: CGVector, maxX: UInt32, maxSpeed: CGFloat, minSpeed: CGFloat, health: Int) {
         self.vector = vector
         self.maxX = maxX
         self.maxSpeed = maxSpeed
         self.minSpeed = minSpeed
+        self.health = health
         
         //make my speed 
-        self.speed = arc4random_uniform(self.maxSpeed + self.minSpeed)
+        self.speed = CGFloat(UInt(arc4random_uniform(UInt32(UInt(self.maxSpeed - self.minSpeed + 1))))) + minSpeed
+        self.vector.dx *= speed
+        self.vector.dy *= speed
         
+        //self.vector.dy *= speed
         //랜덤으로 position 설정
         //self.maxX 사이의 난수
         let x = arc4random_uniform(self.maxX ?? 0 + 1 )
@@ -53,7 +64,12 @@ class EnemyModel {
         //default
         self.radian = 0
         
+        print(position)
         
     }
-     
+    func moveEnemy(){
+        position.x += vector.dx
+        position.y += vector.dy
+        print(position) 
+    }
 }
