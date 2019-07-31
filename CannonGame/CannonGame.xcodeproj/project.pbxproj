@@ -92,9 +92,7 @@
 				3B22571822E9A9B900C4DD1E /* LaunchScreen.storyboard */,
 				3B22571B22E9A9B900C4DD1E /* Info.plist */,
 				3B22572F22E9AE8C00C4DD1E /* CannonBallData.swift */,
-				3B7EEDFB22EAC49000F4814C /* ButtonPicker.swift */,
-				3B7EEDFD22EAE16A00F4814C /* Triangle.swift */,
-				3B7EEDFF22EAE8F300F4814C /* CannonBall.swift */,
+				3B7EEE0122EE8C6100F4814C /* View */,
 			);
 			path = CannonGame;
 			sourceTree = "<group>";
@@ -106,6 +104,16 @@
 				3B22572622E9A9B900C4DD1E /* Info.plist */,
 			);
 			path = CannonGameTests;
+			sourceTree = "<group>";
+		};
+		3B7EEE0122EE8C6100F4814C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3B7EEDFB22EAC49000F4814C /* ButtonPicker.swift */,
+				3B7EEDFF22EAE8F300F4814C /* CannonBall.swift */,
+				3B7EEDFD22EAE16A00F4814C /* Triangle.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

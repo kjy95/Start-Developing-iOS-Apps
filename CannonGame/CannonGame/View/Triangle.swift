@@ -12,8 +12,7 @@ import UIKit
  */
 class Triangle : CannonBall {
     
-    //timer
-    //var timer : Timer?
+    //timer (superview)
     
     //MARK: 초기화
     override init(frame: CGRect) {
@@ -38,7 +37,6 @@ class Triangle : CannonBall {
         context.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         //꼭짓점 그리기
         context.addLine(to: CGPoint(x: (rect.maxX / 2.0), y: rect.minY))
-        //context.bound
         //컨텍스트 종료
         context.closePath()
         
