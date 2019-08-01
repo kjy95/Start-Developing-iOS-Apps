@@ -9,8 +9,8 @@
 import UIKit
 
 protocol GamePauseViewDelegate: class {
-    func invalidateAllTimer()
-    func startAllTimer()
+    func pauseGame()
+    func startNewGame()
 }
 
 /**
@@ -38,14 +38,14 @@ class GamePauseView: UIView {
         self.isHidden = false
         pauseComment.text = "YOU DIED"
         pauseComment.textColor = .red
-        delegate?.invalidateAllTimer()
+        delegate?.pauseGame()
         self.backgroundColor = .clear
     }
     
     
     @IBAction func startButton(_ sender: Any) {
         self.isHidden = true
-        delegate?.startAllTimer()
+        delegate?.startNewGame()
         self.backgroundColor = .clear
     }
     

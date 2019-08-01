@@ -36,9 +36,6 @@ class HealthSlider: UISlider {
     
     func loseHealth(losePoint: Int){
         self.myHealth -= losePoint
-        print(myHealth)
-        print(maxHealth)
-        self.value = Float(myHealth)/Float(maxHealth)
-        print(self.value)
+        self.value = Float(myHealth)/Float(maxHealth) 
     }
 }

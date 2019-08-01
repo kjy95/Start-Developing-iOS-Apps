@@ -13,26 +13,30 @@ class EnemyView: UIView {
     //-------------------------------------------------------------
     //MARK: - Define Funtion
     //
-    
+    var enemyHealthSlider = HealthSlider()
+    var health: Int?
     //MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        enemyInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        enemyInit()
     }
     
     //MARK: change view property function
-    
-    func enemyInit(){
+    func enemyInit(maxHealth: Int){
+        //ADD HEALTH slider in my view
+        let sliderFrame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 30, height: 30))
+        enemyHealthSlider = HealthSlider(frame: sliderFrame)
+        self.addSubview(enemyHealthSlider)
+        self.health = maxHealth
+        enemyHealthSlider.getMaxHealth(maxHealth: health ?? 0)
+        //MY COLOR
         self.backgroundColor = UIColor.black
     }
-    
-    //원 모양으로 변환
-    func circleView(){
-        self.layer.cornerRadius = self.frame.size.width/2
+      
+    func loseHealth(losePoint: Int){
+        enemyHealthSlider.loseHealth(losePoint: losePoint)
     }
 }
