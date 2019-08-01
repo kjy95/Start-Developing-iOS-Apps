@@ -8,12 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, CannonControlViewDelegate {
+class ViewController: UIViewController, CannonControlViewDelegate, GamePauseViewDelegate {
     
-    let potentialCannonSpeed : CGFloat = 10
-    let potentialEnemyMaxSpeed : CGFloat = 10
-    let potentialEnemyMinSpeed : CGFloat = 5
-    let enemyHealth : Int = 1
+    
+  
     //-------------------------------------------------------------
     //MARK: - Define Value
     //
@@ -21,6 +19,7 @@ class ViewController: UIViewController, CannonControlViewDelegate {
     //MARK: View
     @IBOutlet weak var cannonControlView: CannonControlView!
     @IBOutlet weak var cannonFieldView: CannonFieldView!
+    @IBOutlet weak var gamePauseView: GamePauseView!
     
     //MARK: Model
     //대포 모델
@@ -30,8 +29,17 @@ class ViewController: UIViewController, CannonControlViewDelegate {
     var timer = [Timer]()
 
     //mapping two object
-    var cannonBallViewMap = [CannonBallModel:UIView]()
-    var enemyViewMap = [EnemyModel:UIView]()
+    var cannonBallViewMaps = [CannonBallModel:UIView]()
+    var enemyViewMaps = [EnemyModel:[UIView]]()
+    
+    //상수 선언
+    let potentialCannonSpeed : CGFloat = 12
+    let cannonHealth : Int = 3
+    let potentialEnemyMaxSpeed : CGFloat = 2
+    let potentialEnemyMinSpeed : CGFloat = 1
+    let enemyHealth : Int = 2
+    let enemyAttackPower : Int = 1
+    let enemyCreateTimeSpeed : Int = 1
     //-------------------------------------------------------------
     //MARK: - Define FUNCTION
     //
@@ -42,19 +50,17 @@ class ViewController: UIViewController, CannonControlViewDelegate {
         
         //delegate
         cannonControlView.delegate = self
+        gamePauseView.delegate = self
         
+        self.cannonFieldView.bringSubviewToFront(gamePauseView)
         //init cannonModel
-        cannonStructModel = CannonStructModel.init(currentLoc: cannonFieldView.cannon.center, frame: cannonFieldView.commonBall.frame)
+        cannonStructModel = CannonStructModel.init(currentLoc: cannonFieldView.cannon.center, frame: cannonFieldView.commonBall.frame, health: cannonHealth )
         cannonStructModel?.updateCannonVector(radian: CGFloat.pi/2, speed: potentialCannonSpeed)
         
         //cannonModel 데이터를 사용하는 cannonFieldView init
         cannonFieldView.cannonFieldInit(radian: cannonStructModel?.radian ?? CGFloat.pi/2)
         
-        //timer setting
-        //move cannonball/enemy timer
-        timer.append(Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(changeFieldObejctPosition), userInfo: nil, repeats: true))
-        //create enemy timer
-        timer.append(Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true))
+        setStartGameCannonHealthData()
     }
     
     //-------------------------------------------------------------
@@ -128,19 +134,50 @@ class ViewController: UIViewController, CannonControlViewDelegate {
         self.cannonFieldView.addSubview(cannonBallView)
         
         //RECORD IN DICTIONARY
-        cannonBallViewMap[cannonBallModel] = cannonBallView
+        cannonBallViewMaps[cannonBallModel] = cannonBallView
     }
     
+    
+    func startAllTimer() {
+        //data reset
+        setStartGameCannonHealthData()
+        //view contorl
+        self.cannonControlView.enableAllControl()
+        
+        //보이는 적, 포탄 다 지우기
+        for cannonBall in cannonBallViewMaps{
+            removeCannonBallModelAndView(cannonBallViewMap: cannonBall)
+        }
+        for enemy in enemyViewMaps{
+            removeEnemyModelAndView(enemyViewMap: enemy)
+        }
+        
+        //timer setting
+        //move cannonball/enemy timer
+        timer.append(Timer.scheduledTimer(timeInterval: 0.03, target: self, selector: #selector(changeFieldObejctPosition), userInfo: nil, repeats: true))
+        //create enemy timer
+        timer.append(Timer.scheduledTimer(timeInterval: TimeInterval(enemyCreateTimeSpeed), target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true))
+    }
+    
+    //모든 타이머 멈춤
+    func invalidateAllTimer(){
+        for timer in timer{
+            timer.invalidate()
+        }
+        self.cannonControlView.disableAllControl()
+        //setting pause view
+        self.view.bringSubviewToFront(gamePauseView)
+    }
     //-------------------------------------------------------------
     //MARK: - timer selector
     //
     
     @objc func changeFieldObejctPosition(){
-        for (cannonBallModel,view) in cannonBallViewMap{
+        for (cannonBallModel,view) in cannonBallViewMaps{
             moveOrRemove(cannonBallModel: cannonBallModel, cannonBallView: view)
         }
-        for (enemyModel,view) in enemyViewMap{
-            moveOrRemoveEnemy(enemyModel: enemyModel, enemyView: view)
+        for (enemyModel,viewList) in enemyViewMaps{
+            moveOrRemoveEnemy(enemyModel: enemyModel, enemyView: viewList)
         }
     }
     
@@ -150,17 +187,26 @@ class ViewController: UIViewController, CannonControlViewDelegate {
         
         //create Enemy
         //MODEL
-        let enemy = EnemyModel.init(vector: vector, maxX: UInt32(self.view.frame.maxX), maxSpeed: potentialEnemyMaxSpeed, minSpeed: potentialEnemyMinSpeed, health: enemyHealth)
+        let enemy = EnemyModel.init(vector: vector, maxX: UInt32(self.view.frame.maxX), maxSpeed: potentialEnemyMaxSpeed, minSpeed: potentialEnemyMinSpeed, maxHealth: enemyHealth)
         
         //VIEW
+        //enemy view
         let enemyViewFrame = CGRect(x: enemy.position.x, y: enemy.position.y, width: 30, height: 30)
         let enemyView = EnemyView.init(frame: enemyViewFrame)
+        enemyView.center = enemy.position
+        //health view
+        let enemyHealthSliderFrame = CGRect(x: enemy.position.x, y: enemy.position.y, width: 30, height: 30)
+        let enemyHealthSlider = HealthSlider.init(frame: enemyHealthSliderFrame)
+        enemyHealthSlider.getMaxHealth(maxHealth: enemyHealth)
         
-        //mapping
-        enemyViewMap[enemy] = enemyView
+        //mapping view
+        enemyViewMaps[enemy] = [UIView]()
+        enemyViewMaps[enemy]?.append(enemyView)
+        enemyViewMaps[enemy]?.append(enemyHealthSlider)
         
         //add the view
         self.view.addSubview(enemyView)
+        self.view.addSubview(enemyHealthSlider)
         
         print("적 생성")
     }
@@ -190,40 +236,82 @@ class ViewController: UIViewController, CannonControlViewDelegate {
         cannonBallView.center = cannonBallModel.position
         
         //수퍼뷰 관점에서 포탄 위치
-        let currentBallLoc = cannonFieldView.convert(cannonBallViewMap[cannonBallModel]?.center ?? CGPoint(x: 0, y: 0), to: nil)
+        let currentBallLoc = cannonFieldView.convert(cannonBallViewMaps[cannonBallModel]?.center ?? CGPoint(x: 0, y: 0), to: nil)
         
         //화면 밖으로 나가면
         if currentBallLoc.x <= 0 || currentBallLoc.x >= self.view.frame.maxX  || currentBallLoc.y <= 0 {
-            print("제거")
-            //REMOVE MODEL
-            cannonBallViewMap.removeValue(forKey: cannonBallModel)
-            //REMOVE VIEW
-            cannonBallView.removeFromSuperview()
-            
+            //포탄 지움(모델, 뷰 모두)
+            removeCannonBallModelAndView(cannonBallViewMap: (key: cannonBallModel, value: cannonBallView))
         }
     }
-    private func moveOrRemoveEnemy(enemyModel: EnemyModel, enemyView: UIView){
+    
+    private func moveOrRemoveEnemy(enemyModel: EnemyModel, enemyView: [UIView]){
         //UPDATE MODEL - cannonballModel position
         enemyModel.moveEnemy()
         //UPDATE VIEW - cannonballview position
-        enemyView.center = enemyModel.position
-         
+        enemyView[0].center = enemyModel.position
+        enemyView[1].frame = enemyView[0].frame
         //수퍼뷰 관점에서 대포필드 최소 Y값
         let cannonFieldBoundY = cannonFieldView.convert(CGPoint(x: cannonFieldView.frame.minY,y: cannonFieldView.frame.minX), to: nil).y
         
         //화면 밖으로 나가면
         if enemyModel.position.y >= cannonFieldBoundY {
-            print("제거")
-            //REMOVE MODEL
-            enemyViewMap.removeValue(forKey: enemyModel)
-            //REMOVE VIEW
-            enemyView.removeFromSuperview()
+            //REMOVE ENEMY
+            removeEnemyModelAndView(enemyViewMap: (key: enemyModel, value: enemyView))
+            print("적이 대포를 공격")
+            //UPDATE CANNONSTRUCT
+            //Model
+            cannonStructModel?.loseHealth(losePoint: enemyAttackPower)
+            //VIEW update
+            cannonFieldView.loseHealth(losePoint: enemyAttackPower)
+            if cannonStructModel?.myHealth == 0 {
+                print("game over")
+                //타이머 멈춤
+                gamePauseView.gameOver()
+            }
+        }
+        
+        //포탄이랑 적이 겹치는지 확인 - todo: 함수 빼기
+        for cannonBallViewMap in cannonBallViewMaps{
+            let cannonBallViewFrame = cannonFieldView.convert(cannonBallViewMap.value.frame, to: nil)
+            //겹치면
+            if cannonBallViewFrame.intersects(enemyView[0].frame) {
+                //적 체력 -1
+                //MODEL
+                enemyModel.loseHealth(losePoint: 1)
+                //VIEW
+                (enemyView[1] as! HealthSlider).loseHealth(losePoint: 1)
+                //적 체력이 0이면 REMOVE
+                if enemyModel.AmIDisappear(){
+                    removeEnemyModelAndView(enemyViewMap: (key: enemyModel, value: enemyView))
+                }
+                //REMOVE CANNON BALL
+                removeCannonBallModelAndView(cannonBallViewMap: cannonBallViewMap)
+            }
         }
     }
-    //모든 타이머 멈춤
-    private func invalidateAllTimer(){
-        for timer in timer{
-            timer.invalidate()
-        }
+    
+    //포탄 지우기
+    private func removeCannonBallModelAndView(cannonBallViewMap:(key: CannonBallModel, value: UIView)){
+        //REMOVE MODEL
+        cannonBallViewMaps.removeValue(forKey: cannonBallViewMap.key)
+        //REMOVE VIEW
+        cannonBallViewMap.value.removeFromSuperview()
+    }
+    
+    //적 지우기
+    private func removeEnemyModelAndView(enemyViewMap: (key: EnemyModel, value: [UIView])){
+        //REMOVE MODEL
+        enemyViewMaps.removeValue(forKey: enemyViewMap.key)
+        //REMOVE VIEW
+        enemyViewMap.value[0].removeFromSuperview()
+        enemyViewMap.value[1].removeFromSuperview()
+    }
+    
+    private func setStartGameCannonHealthData(){
+        //cannonModel 데이터를 사용하는 cannonFieldView init
+        cannonFieldView.healthSliderInit(health: cannonHealth)
+        cannonStructModel?.myHealth = cannonHealth
+        
     }
 }

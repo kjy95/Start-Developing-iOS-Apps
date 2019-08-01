@@ -26,6 +26,14 @@ class CannonControlView: UIView {
     //-------------------------------------------------------------
     //MARK: - define value
     //
+    
+    //button
+    @IBOutlet weak var rectButton: UIButton!
+    @IBOutlet weak var triangleButton: UIButton!
+    @IBOutlet weak var circleButton: UIButton!
+    @IBOutlet weak var fireButton: UIButton!
+    @IBOutlet weak var cannonSlider: UISlider!
+    
     weak var delegate: CannonControlViewDelegate?
     
     //-------------------------------------------------------------
@@ -54,5 +62,22 @@ class CannonControlView: UIView {
     //fire 버튼 눌렀을 때
     @IBAction func tapFire(_ sender: Any) {
         delegate?.fireCannonBall()
+    }
+    
+    
+    func disableAllControl(){
+        self.cannonSlider.isEnabled = false
+        self.fireButton.isEnabled = false
+        self.rectButton.isEnabled = false
+        self.circleButton.isEnabled = false
+        self.triangleButton.isEnabled = false
+    }
+    
+    func enableAllControl(){
+        self.cannonSlider.isEnabled = true
+        self.fireButton.isEnabled = true
+        self.rectButton.isEnabled = true
+        self.circleButton.isEnabled = true
+        self.triangleButton.isEnabled = true
     }
 }

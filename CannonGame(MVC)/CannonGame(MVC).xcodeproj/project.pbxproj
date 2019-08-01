@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B7EEE0322F17B0000F4814C /* EnemyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7EEE0222F17B0000F4814C /* EnemyView.swift */; };
+		3B7EEE0522F273F300F4814C /* HealthSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7EEE0422F273F300F4814C /* HealthSlider.swift */; };
+		3B7EEE0722F2979000F4814C /* GamePauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7EEE0622F2979000F4814C /* GamePauseView.swift */; };
 		BF25386822EF22E20093F977 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25386722EF22E20093F977 /* AppDelegate.swift */; };
 		BF25386A22EF22E20093F977 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25386922EF22E20093F977 /* ViewController.swift */; };
 		BF25386D22EF22E20093F977 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF25386B22EF22E20093F977 /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		3B7EEE0222F17B0000F4814C /* EnemyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyView.swift; sourceTree = "<group>"; };
+		3B7EEE0422F273F300F4814C /* HealthSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSlider.swift; sourceTree = "<group>"; };
+		3B7EEE0622F2979000F4814C /* GamePauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePauseView.swift; sourceTree = "<group>"; };
 		BF25386422EF22E20093F977 /* CannonGame(MVC).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CannonGame(MVC).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF25386722EF22E20093F977 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF25386922EF22E20093F977 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				BF25388622EF267E0093F977 /* CannonControlView.swift */,
 				BF25388422EF24E50093F977 /* CannonBallView.swift */,
 				3B7EEE0222F17B0000F4814C /* EnemyView.swift */,
+				3B7EEE0422F273F300F4814C /* HealthSlider.swift */,
+				3B7EEE0622F2979000F4814C /* GamePauseView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -188,10 +194,12 @@
 				BF25388D22F007480093F977 /* CannonFieldView.swift in Sources */,
 				BF25386A22EF22E20093F977 /* ViewController.swift in Sources */,
 				BF25386822EF22E20093F977 /* AppDelegate.swift in Sources */,
+				3B7EEE0722F2979000F4814C /* GamePauseView.swift in Sources */,
 				3B7EEE0322F17B0000F4814C /* EnemyView.swift in Sources */,
 				BF25388922EFE0DB0093F977 /* EnemyModel.swift in Sources */,
 				BF25388122EF247B0093F977 /* CannonBallModel.swift in Sources */,
 				BF25388322EF24990093F977 /* TriangleView.swift in Sources */,
+				3B7EEE0522F273F300F4814C /* HealthSlider.swift in Sources */,
 				BF25387F22EF24720093F977 /* CannonStructModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,26 +36,27 @@ class EnemyModel: Hashable{
     var speed : CGFloat
     
     //체력
-    var health : Int?
+    var maxHealth : Int?
+    var myHealth : Int = 0
     //-------------------------------------------------------------
     //MARK: - define function
     //
 
     //MARK: 초기화
     
-    init(vector: CGVector, maxX: UInt32, maxSpeed: CGFloat, minSpeed: CGFloat, health: Int) {
+    init(vector: CGVector, maxX: UInt32, maxSpeed: CGFloat, minSpeed: CGFloat, maxHealth: Int) {
         self.vector = vector
         self.maxX = maxX
         self.maxSpeed = maxSpeed
         self.minSpeed = minSpeed
-        self.health = health
+        self.maxHealth = maxHealth
+        self.myHealth = maxHealth
         
         //make my speed 
         self.speed = CGFloat(UInt(arc4random_uniform(UInt32(UInt(self.maxSpeed - self.minSpeed + 1))))) + minSpeed
         self.vector.dx *= speed
         self.vector.dy *= speed
         
-        //self.vector.dy *= speed
         //랜덤으로 position 설정
         //self.maxX 사이의 난수
         let x = arc4random_uniform(self.maxX ?? 0 + 1 )
@@ -64,12 +65,24 @@ class EnemyModel: Hashable{
         //default
         self.radian = 0
         
-        print(position)
-        
     }
+    
+    //움직이기
     func moveEnemy(){
         position.x += vector.dx
         position.y += vector.dy
-        print(position) 
+    }
+    
+    //체력 깎임
+    func loseHealth(losePoint: Int) {
+        self.myHealth -= losePoint
+    }
+    
+    //자신의 채력이 0인지 확인
+    func AmIDisappear()->Bool{
+        if self.myHealth == 0{
+            return true
+        }
+        return false
     }
 }

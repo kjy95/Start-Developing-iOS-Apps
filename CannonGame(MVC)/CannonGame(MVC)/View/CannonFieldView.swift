@@ -25,7 +25,11 @@ class CannonFieldView: UIView {
     @IBOutlet weak var triangleBall: TriangleView!
     @IBOutlet weak var commonBall: CannonBallView!
     
+    //채력 바
+    var healthSlider : HealthSlider?
+    var healthLable : UILabel?
     
+    var health: Int?
     //-------------------------------------------------------------
     //MARK: - define function
     //
@@ -33,15 +37,32 @@ class CannonFieldView: UIView {
     //MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        healthSlider = HealthSlider.init(frame: CGRect(x: 20, y: 20, width: self.frame.maxX / 3, height: 40))
+        healthLable = UILabel.init(frame: CGRect(x: 20, y: 7, width: self.frame.maxX / 3, height: 40))
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        healthSlider = HealthSlider.init(frame: CGRect(x: 20, y: 20, width: self.frame.maxX / 3, height: 40))
+        healthLable = UILabel.init(frame: CGRect(x: 20, y: 7, width: self.frame.maxX / 3, height: 40))
+        
     }
     
     
     //MARK: transform view, view shape
-    
+    /*
+     체력바 초기화
+     */
+    func healthSliderInit(health: Int){
+        self.health = health
+        //make health slider
+        healthSlider?.getMaxHealth(maxHealth: health)
+        self.addSubview(healthSlider!)
+        //label
+        healthLable?.text = "체력: \(health)"
+        self.addSubview(healthLable!)
+    }
     /*
      대포, 포탄 각도, 크기 초기화
      */
@@ -94,4 +115,11 @@ class CannonFieldView: UIView {
             
         }
     }
+    
+    func loseHealth(losePoint:Int){
+        self.health = self.health! - losePoint
+        self.healthSlider?.loseHealth(losePoint: losePoint)  
+        healthLable?.text = "체력: \(health!)"
+    }
+    
 }

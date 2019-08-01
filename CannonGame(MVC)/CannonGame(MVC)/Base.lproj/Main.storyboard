@@ -18,22 +18,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fif-IL-zib">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fif-IL-zib" customClass="GamePauseView" customModule="CannonGame_MVC_" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="476"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CANNON GAME" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPz-tQ-qhk">
+                                        <rect key="frame" x="24" y="94" width="322" height="170"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="63"/>
+                                        <nil key="textColor"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nhj-kH-nno">
+                                        <rect key="frame" x="129" y="343" width="112" height="51"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.94225631475233151" green="0.23431740550766461" blue="0.51276334615810293" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                        <state key="normal" title="START">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startButton:" destination="fif-IL-zib" eventType="touchUpInside" id="cnK-xr-ltt"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="pauseComment" destination="tPz-tQ-qhk" id="Bqm-qy-FVu"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F6m-nC-6Mz" customClass="CannonFieldView" customModule="CannonGame_MVC_" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="495" width="375" height="59"/>
+                                <rect key="frame" x="0.0" y="494" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MjW-gF-FIU">
-                                        <rect key="frame" x="154" y="18" width="67" height="23"/>
+                                        <rect key="frame" x="154" y="10" width="90" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vmb-7q-1Ek" customClass="TriangleView" customModule="CannonGame_MVC_" customModuleProvider="target">
-                                        <rect key="frame" x="175" y="18" width="24" height="23"/>
+                                        <rect key="frame" x="185" y="10" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </view>
@@ -43,7 +67,7 @@
                                         <color key="backgroundColor" red="0.86536657810211182" green="0.22862881371993043" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Fo-kP-3YL" customClass="CannonBallView" customModule="CannonGame_MVC_" customModuleProvider="target">
-                                        <rect key="frame" x="176" y="18" width="24" height="23"/>
+                                        <rect key="frame" x="184" y="10" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </view>
@@ -61,7 +85,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ght-5y-QC3">
-                                        <rect key="frame" x="172" y="2" width="65" height="49"/>
+                                        <rect key="frame" x="172" y="-1" width="65" height="49"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.52517650035058139" green="0.69072103854501288" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Rect">
@@ -72,7 +96,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mke-5S-66x">
-                                        <rect key="frame" x="312" y="2" width="58" height="49"/>
+                                        <rect key="frame" x="312" y="-1" width="58" height="49"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.52517650035058139" green="0.69072103854501288" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Circle">
@@ -83,9 +107,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQ2-XP-0ch">
-                                        <rect key="frame" x="182" y="57" width="185" height="49"/>
+                                        <rect key="frame" x="182" y="52" width="185" height="53"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.94178849460000003" green="0.13327005510000001" blue="0.395211488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.73249787092208862" green="0.18183824419975281" blue="0.40782630443572998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <state key="normal" title="Fire">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -95,7 +119,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bp-cE-1gK">
-                                        <rect key="frame" x="243" y="2" width="64" height="49"/>
+                                        <rect key="frame" x="243" y="-1" width="64" height="49"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.52517650035058139" green="0.69072103854501288" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Triangle">
@@ -133,6 +157,13 @@
                                     </slider>
                                 </subviews>
                                 <color key="backgroundColor" red="0.75280658290793856" green="0.75280658290793856" blue="0.75280658290793856" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <outlet property="cannonSlider" destination="IQX-Mu-r6X" id="Wfv-Ce-hh7"/>
+                                    <outlet property="circleButton" destination="mke-5S-66x" id="ZKp-yE-95J"/>
+                                    <outlet property="fireButton" destination="EQ2-XP-0ch" id="28h-xu-Jbe"/>
+                                    <outlet property="rectButton" destination="Ght-5y-QC3" id="Rdr-l4-B0b"/>
+                                    <outlet property="triangleButton" destination="0bp-cE-1gK" id="sd6-zI-fQb"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -141,6 +172,7 @@
                     <connections>
                         <outlet property="cannonControlView" destination="xnT-ay-nQl" id="4yN-Lh-o00"/>
                         <outlet property="cannonFieldView" destination="F6m-nC-6Mz" id="IFQ-3Z-ffZ"/>
+                        <outlet property="gamePauseView" destination="fif-IL-zib" id="nKz-qE-z1O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

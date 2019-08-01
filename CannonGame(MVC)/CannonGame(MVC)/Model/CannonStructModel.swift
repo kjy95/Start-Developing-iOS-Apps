@@ -26,6 +26,8 @@ class CannonStructModel {
     var type : String?
     //frmae
     var frame : CGRect?
+    //health
+    var myHealth : Int
     
     //-------------------------------------------------------------
     //MARK: - Define function
@@ -33,7 +35,7 @@ class CannonStructModel {
     
     //MARK: init
     //초기화
-    init(currentLoc: CGPoint, frame: CGRect) {
+    init(currentLoc: CGPoint, frame: CGRect, health: Int) {
         self.currentLoc = currentLoc
         
         //default
@@ -41,12 +43,19 @@ class CannonStructModel {
         self.earlyTransform = CGAffineTransform.identity
         self.type = "rectangle"
         self.frame = frame
+        self.myHealth = health
     }
     
     //MARK: change value
+    //방향
     func updateCannonVector(radian: CGFloat, speed: CGFloat){
         self.radian = radian
         self.vector.dx = -cos(radian) * speed
         self.vector.dy = -sin(radian) * speed
+    }
+    
+    //체력
+    func loseHealth(losePoint: Int){
+        self.myHealth -= losePoint
     }
 }
