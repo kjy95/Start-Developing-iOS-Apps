@@ -20,19 +20,15 @@ class CannonBallView: UIView {
     //MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        cannonBallInit()
+        self.backgroundColor = UIColor.red
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        cannonBallInit()
+        self.backgroundColor = UIColor.red
     }
      
     //MARK: change view property function
-    
-    func cannonBallInit(){
-        self.backgroundColor = UIColor.red
-    }
     
     //원 모양으로 변환
     func circleView(){

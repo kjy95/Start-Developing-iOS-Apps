@@ -39,14 +39,12 @@ class GamePauseView: UIView {
         pauseComment.text = "YOU DIED"
         pauseComment.textColor = .red
         delegate?.pauseGame()
-        self.backgroundColor = .clear
     }
     
     
     @IBAction func startButton(_ sender: Any) {
         self.isHidden = true
         delegate?.startNewGame()
-        self.backgroundColor = .clear
     }
     
 }

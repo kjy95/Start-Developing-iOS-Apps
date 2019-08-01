@@ -79,7 +79,7 @@ class EnemyModel: Hashable{
     }
     
     //자신의 채력이 0인지 확인
-    func AmIDisappear()->Bool{
+    func IsMyHealthZero()->Bool{
         if self.myHealth == 0{
             return true
         }
