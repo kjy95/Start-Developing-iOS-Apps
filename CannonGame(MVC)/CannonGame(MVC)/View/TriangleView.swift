@@ -47,7 +47,7 @@ class TriangleView : CannonBallView {
         context.closePath()
         
         //color 설정
-        context.setFillColor(UIColor.red.cgColor)
+        context.setFillColor(UIColor.blue.cgColor)
         
         //그린 부분 채우기
         context.fillPath() 

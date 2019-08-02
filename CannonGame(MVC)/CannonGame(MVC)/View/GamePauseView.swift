@@ -8,15 +8,18 @@
 
 import UIKit
 
-protocol GamePauseViewDelegate: class {
-    func pauseGame()
-    func startNewGame()
-}
-
 /**
  게임 멈춤화면
  */
 
+//MARK: - define protocol
+protocol GamePauseViewDelegate: class {
+    // 각 버튼 선택 했을 때 함수 (프로토콜)
+    func pauseGame()
+    func startNewGame()
+}
+
+//MARK: - define class
 class GamePauseView: UIView {
     //MARK: - define value
     //UI

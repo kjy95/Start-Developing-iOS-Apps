@@ -78,7 +78,7 @@ class EnemyModel: Hashable{
         self.myHealth -= losePoint
     }
     
-    //자신의 채력이 0인지 확인
+    //자신의 체력이 0인지 확인
     func IsMyHealthZero()->Bool{
         if self.myHealth == 0{
             return true

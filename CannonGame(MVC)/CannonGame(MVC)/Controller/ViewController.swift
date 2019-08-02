@@ -32,11 +32,11 @@ class ViewController: UIViewController, CannonControlViewDelegate, GamePauseView
     
     //MARK: 상수 선언
     //포탄 상수
-    let potentialCannonSpeed : CGFloat = 12
+    let potentialCannonSpeed : CGFloat = 15
     let cannonHealth : Int = 3
     let cannonAttackPower : Int = 1
     //적 상수
-    let potentialEnemyMaxSpeed : CGFloat = 8
+    let potentialEnemyMaxSpeed : CGFloat = 2
     let potentialEnemyMinSpeed : CGFloat = 1
     let enemyHealth : Int = 3
     let enemyAttackPower : Int = 1
@@ -97,11 +97,8 @@ class ViewController: UIViewController, CannonControlViewDelegate, GamePauseView
         cannonFieldView.roateCannonStruct(radian: radian)
     }
     
-    //tap fire button
+    //tap fire button - 포탄 생성
     func fireCannonBall(){
-        /**
-         쏠 포탄 생성
-         */
         
         //CREATE MODEL
         /**
@@ -177,6 +174,7 @@ class ViewController: UIViewController, CannonControlViewDelegate, GamePauseView
         for timer in timer{
             timer.invalidate()
         }
+        timer.removeAll()
         //control
         self.cannonControlView.disableAllControl()
         //setting pause view
@@ -188,8 +186,9 @@ class ViewController: UIViewController, CannonControlViewDelegate, GamePauseView
     //
     
     @objc func changeFieldObejctPosition(){
-        for (cannonBallModel,view) in cannonBallViewMaps{
-            moveOrRemoveCannonBall(cannonBallModel: cannonBallModel, cannonBallView: view)
+        for (cannonBallModel,annonBallview) in cannonBallViewMaps{
+            //포탄 위치를 벡터를 이용해 바꿈
+            moveOrRemoveCannonBall(cannonBallModel: cannonBallModel, cannonBallView: annonBallview)
         }
         
         for (enemyModel,enemyView) in enemyViewMaps{
@@ -199,13 +198,15 @@ class ViewController: UIViewController, CannonControlViewDelegate, GamePauseView
             removeWhenCannonBallIntersected(enemyModel: enemyModel, enemyView: enemyView)
             //적 체력이 0이면 적이 제거됨.
             removeEnemyWhenHealthZero(enemyModel: enemyModel, enemyView: enemyView)
-        }
-        
-        //cannon의 체력이 0이라면
-        if cannonStructModel?.myHealth == 0 {
-            print("game over")
-            //View
-            gamePauseView.gameOver()
+            
+            //cannon의 체력이 0이라면
+            if cannonStructModel?.myHealth == 0 {
+                print("game over")
+                //show gamePauseView View
+                gamePauseView.gameOver()
+                
+                break
+            }
         }
     }
     
@@ -239,10 +240,10 @@ class ViewController: UIViewController, CannonControlViewDelegate, GamePauseView
     
     /**
      슬라이더 값을 라디안 값으로 전환 후 리턴
-     슬라이더 값 -> 라디안 값 (-45 - 45도 처럼 보임)
+     슬라이더 값 -> 라디안 값 (-45 - 45도 처럼 보임) let radian = CGFloat.pi/4 + (CGFloat.pi/2) * CGFloat(sliderValue)
     */
     private func sliderValueToRadian(sliderValue: Float) -> CGFloat{
-        let radian = CGFloat.pi/4 + (CGFloat.pi/2) * CGFloat(sliderValue)
+        let radian = CGFloat.pi * CGFloat(sliderValue)
         return radian
     }
     
@@ -288,6 +289,7 @@ class ViewController: UIViewController, CannonControlViewDelegate, GamePauseView
         }
     }
     
+    //포탄이 적과 겹칠 때 적을 REMOVE
     private func removeWhenCannonBallIntersected(enemyModel: EnemyModel, enemyView: EnemyView){
         for cannonBallViewMap in cannonBallViewMaps{
             let cannonBallViewFrame = cannonFieldView.convert(cannonBallViewMap.value.frame, to: nil)
@@ -305,6 +307,7 @@ class ViewController: UIViewController, CannonControlViewDelegate, GamePauseView
         }
     }
     
+    //적 체력이 0이면 적 REMOVE
     private func removeEnemyWhenHealthZero(enemyModel: EnemyModel, enemyView: EnemyView){
         if enemyModel.IsMyHealthZero(){
             removeEnemyModelAndView(enemyViewMap: (key: enemyModel, value: enemyView))

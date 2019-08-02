@@ -32,10 +32,12 @@ class EnemyView: UIView {
         self.addSubview(enemyHealthSlider)
         self.health = maxHealth
         enemyHealthSlider.getMaxHealth(maxHealth: health ?? 0)
+        
         //MY COLOR
         self.backgroundColor = UIColor.black
     }
-      
+    
+    //체력을 잃을 때 체력바 설정
     func loseHealth(losePoint: Int){
         enemyHealthSlider.loseHealth(losePoint: losePoint)
     }

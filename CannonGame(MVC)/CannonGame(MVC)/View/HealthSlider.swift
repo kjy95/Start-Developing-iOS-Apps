@@ -8,32 +8,38 @@
 
 import UIKit
 /**
- 남은 체력을 시각적으로 보여줌
+ 체력바
  */
 class HealthSlider: UISlider {
+    //체력 데이터
     var maxHealth : Int = 0
     var myHealth: Int = 0
-    var myPosition : CGPoint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setThumbImage(UIImage(), for: .normal)
-        self.minimumTrackTintColor = .red
-        self.maximumTrackTintColor = .white
+        initHealthSlider()
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initHealthSlider()
+    }
+    
+    //color, isEnabled 초기화
+    func initHealthSlider(){
         self.setThumbImage(UIImage(), for: .normal)
         self.minimumTrackTintColor = .red
         self.maximumTrackTintColor = .white
+        self.isEnabled = false
     }
-
+    
+    //최대 체력 설정
     func getMaxHealth(maxHealth: Int) {
         self.value = 1
         self.myHealth = maxHealth
         self.maxHealth = maxHealth
     }
     
+    //체력을 잃음.
     func loseHealth(losePoint: Int){
         self.myHealth -= losePoint
         self.value = Float(myHealth)/Float(maxHealth) 

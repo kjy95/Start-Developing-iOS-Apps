@@ -64,7 +64,7 @@ class CannonControlView: UIView {
         delegate?.fireCannonBall()
     }
     
-    
+    //버튼 모두 disable
     func disableAllControl(){
         self.cannonSlider.isEnabled = false
         self.fireButton.isEnabled = false
@@ -73,6 +73,7 @@ class CannonControlView: UIView {
         self.triangleButton.isEnabled = false
     }
     
+    //버튼 모두 enable
     func enableAllControl(){
         self.cannonSlider.isEnabled = true
         self.fireButton.isEnabled = true

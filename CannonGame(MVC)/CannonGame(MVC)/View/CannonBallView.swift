@@ -20,12 +20,12 @@ class CannonBallView: UIView {
     //MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.red
+        self.backgroundColor = UIColor.blue
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.backgroundColor = UIColor.red
+        self.backgroundColor = UIColor.blue
     }
      
     //MARK: change view property function
