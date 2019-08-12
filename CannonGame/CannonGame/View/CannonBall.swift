@@ -13,6 +13,9 @@ import UIKit
  */
 class CannonBall: UIView {
 
+    //timer
+    var timer : Timer?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         cannonBallInit()
@@ -25,8 +28,6 @@ class CannonBall: UIView {
     
     func cannonBallInit(){
         self.backgroundColor = UIColor.blue
-        self.layer.borderColor = UIColor.black.cgColor
-        self.layer.borderWidth = 1
     }
 
 }

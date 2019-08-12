@@ -7,18 +7,26 @@
 //
 
 import UIKit
+
 /**
  삼각형 포탄
  */
-class Triangle : UIView {
+class TriangleView : CannonBallView {
+    //-------------------------------------------------------------
+    //MARK: - define function
+    //
     
-    //MARK: 초기화
+    //MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        //background color
+        backgroundColor = UIColor(white: 0, alpha: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        //background color
+        backgroundColor = UIColor(white: 0, alpha: 0)
     }
     
     //삼각형 그리기
@@ -35,15 +43,13 @@ class Triangle : UIView {
         context.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         //꼭짓점 그리기
         context.addLine(to: CGPoint(x: (rect.maxX / 2.0), y: rect.minY))
-        //context.bound
         //컨텍스트 종료
         context.closePath()
         
         //color 설정
         context.setFillColor(UIColor.blue.cgColor)
-       
-        //그린 부분 채우기
-        context.fillPath()
         
+        //그린 부분 채우기
+        context.fillPath() 
     }
 }
