@@ -11,10 +11,14 @@ import UIKit
 class EnemyView: UIView {
 
     //-------------------------------------------------------------
-    //MARK: - Define Funtion
+    //MARK: - Define Value
     //
     var enemyHealthSlider = HealthSlider()
     var health: Int?
+    
+    //-------------------------------------------------------------
+    //MARK: - Define Funtion
+    //
     //MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)

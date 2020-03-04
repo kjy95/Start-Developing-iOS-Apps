@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18DDA6CDABA4512F9113D5A2 /* Pods_CannonGame_MVC_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81321B07824FFC271CA5AB62 /* Pods_CannonGame_MVC_.framework */; };
 		3B7EEE0322F17B0000F4814C /* EnemyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7EEE0222F17B0000F4814C /* EnemyView.swift */; };
 		3B7EEE0522F273F300F4814C /* HealthSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7EEE0422F273F300F4814C /* HealthSlider.swift */; };
 		3B7EEE0722F2979000F4814C /* GamePauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7EEE0622F2979000F4814C /* GamePauseView.swift */; };
@@ -22,12 +23,16 @@
 		BF25388722EF267E0093F977 /* CannonControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25388622EF267E0093F977 /* CannonControlView.swift */; };
 		BF25388922EFE0DB0093F977 /* EnemyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25388822EFE0DB0093F977 /* EnemyModel.swift */; };
 		BF25388D22F007480093F977 /* CannonFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25388C22F007480093F977 /* CannonFieldView.swift */; };
+		BFF0F5E52364229F00AEB56E /* GameStartStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF0F5E42364229F00AEB56E /* GameStartStoryView.swift */; };
+		BFF0F5E82364261B00AEB56E /* monologueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF0F5E72364261B00AEB56E /* monologueView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		082C02FF48BB084F669B4E58 /* Pods-CannonGame(MVC).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CannonGame(MVC).release.xcconfig"; path = "Target Support Files/Pods-CannonGame(MVC)/Pods-CannonGame(MVC).release.xcconfig"; sourceTree = "<group>"; };
 		3B7EEE0222F17B0000F4814C /* EnemyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyView.swift; sourceTree = "<group>"; };
 		3B7EEE0422F273F300F4814C /* HealthSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSlider.swift; sourceTree = "<group>"; };
 		3B7EEE0622F2979000F4814C /* GamePauseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePauseView.swift; sourceTree = "<group>"; };
+		81321B07824FFC271CA5AB62 /* Pods_CannonGame_MVC_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CannonGame_MVC_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF25386422EF22E20093F977 /* CannonGame(MVC).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CannonGame(MVC).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF25386722EF22E20093F977 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF25386922EF22E20093F977 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +47,9 @@
 		BF25388622EF267E0093F977 /* CannonControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannonControlView.swift; sourceTree = "<group>"; };
 		BF25388822EFE0DB0093F977 /* EnemyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyModel.swift; sourceTree = "<group>"; };
 		BF25388C22F007480093F977 /* CannonFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannonFieldView.swift; sourceTree = "<group>"; };
+		BFF0F5E42364229F00AEB56E /* GameStartStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartStoryView.swift; sourceTree = "<group>"; };
+		BFF0F5E72364261B00AEB56E /* monologueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = monologueView.swift; sourceTree = "<group>"; };
+		CE9DE6B43893EBC8B4A63CAC /* Pods-CannonGame(MVC).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CannonGame(MVC).debug.xcconfig"; path = "Target Support Files/Pods-CannonGame(MVC)/Pods-CannonGame(MVC).debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,17 +57,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18DDA6CDABA4512F9113D5A2 /* Pods_CannonGame_MVC_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0453613ACDEB5C9054A6140D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE9DE6B43893EBC8B4A63CAC /* Pods-CannonGame(MVC).debug.xcconfig */,
+				082C02FF48BB084F669B4E58 /* Pods-CannonGame(MVC).release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		35D819CC217126567CF83D14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				81321B07824FFC271CA5AB62 /* Pods_CannonGame_MVC_.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF25385B22EF22E20093F977 = {
 			isa = PBXGroup;
 			children = (
 				BF25386622EF22E20093F977 /* CannonGame(MVC) */,
 				BF25386522EF22E20093F977 /* Products */,
+				0453613ACDEB5C9054A6140D /* Pods */,
+				35D819CC217126567CF83D14 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +102,8 @@
 		BF25386622EF22E20093F977 /* CannonGame(MVC) */ = {
 			isa = PBXGroup;
 			children = (
-				BF25387B22EF23AA0093F977 /* Controller */,
-				BF25387A22EF23A10093F977 /* View */,
-				BF25387922EF238F0093F977 /* Model */,
+				BFF0F5E6236423CC00AEB56E /* StoryGame */,
+				BFF0F5E3236421A700AEB56E /* ShottingGameStart */,
 				BF25386722EF22E20093F977 /* AppDelegate.swift */,
 				BF25386B22EF22E20093F977 /* Main.storyboard */,
 				BF25386E22EF22E50093F977 /* Assets.xcassets */,
@@ -118,6 +145,25 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		BFF0F5E3236421A700AEB56E /* ShottingGameStart */ = {
+			isa = PBXGroup;
+			children = (
+				BF25387922EF238F0093F977 /* Model */,
+				BF25387A22EF23A10093F977 /* View */,
+				BF25387B22EF23AA0093F977 /* Controller */,
+			);
+			path = ShottingGameStart;
+			sourceTree = "<group>";
+		};
+		BFF0F5E6236423CC00AEB56E /* StoryGame */ = {
+			isa = PBXGroup;
+			children = (
+				BFF0F5E42364229F00AEB56E /* GameStartStoryView.swift */,
+				BFF0F5E72364261B00AEB56E /* monologueView.swift */,
+			);
+			path = StoryGame;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,9 +171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF25387622EF22E50093F977 /* Build configuration list for PBXNativeTarget "CannonGame(MVC)" */;
 			buildPhases = (
+				35DA4806A7B34123F14A2D58 /* [CP] Check Pods Manifest.lock */,
 				BF25386022EF22E20093F977 /* Sources */,
 				BF25386122EF22E20093F977 /* Frameworks */,
 				BF25386222EF22E20093F977 /* Resources */,
+				A8B1E608457C2F85C29E2723 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,6 +232,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		35DA4806A7B34123F14A2D58 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CannonGame(MVC)-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8B1E608457C2F85C29E2723 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CannonGame(MVC)/Pods-CannonGame(MVC)-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CannonGame(MVC)/Pods-CannonGame(MVC)-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BF25386022EF22E20093F977 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -191,6 +286,7 @@
 			files = (
 				BF25388722EF267E0093F977 /* CannonControlView.swift in Sources */,
 				BF25388522EF24E50093F977 /* CannonBallView.swift in Sources */,
+				BFF0F5E82364261B00AEB56E /* monologueView.swift in Sources */,
 				BF25388D22F007480093F977 /* CannonFieldView.swift in Sources */,
 				BF25386A22EF22E20093F977 /* ViewController.swift in Sources */,
 				BF25386822EF22E20093F977 /* AppDelegate.swift in Sources */,
@@ -200,6 +296,7 @@
 				BF25388122EF247B0093F977 /* CannonBallModel.swift in Sources */,
 				BF25388322EF24990093F977 /* TriangleView.swift in Sources */,
 				3B7EEE0522F273F300F4814C /* HealthSlider.swift in Sources */,
+				BFF0F5E52364229F00AEB56E /* GameStartStoryView.swift in Sources */,
 				BF25387F22EF24720093F977 /* CannonStructModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,7 +374,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -332,7 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -344,6 +441,7 @@
 		};
 		BF25387722EF22E50093F977 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE9DE6B43893EBC8B4A63CAC /* Pods-CannonGame(MVC).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -362,6 +460,7 @@
 		};
 		BF25387822EF22E50093F977 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 082C02FF48BB084F669B4E58 /* Pods-CannonGame(MVC).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
